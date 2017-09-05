@@ -1,4 +1,11 @@
 import React from 'react'
+import LocalStore from '../util/localStore'
+import {CITYNAME} from '../config/localStoreKey';
+
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import * as userInfoActionsFromOtherFile from '../action/userinfo';
+
 
 class App extends React.Component {
     constructor(props, context) {
@@ -21,13 +28,41 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        // 1秒钟加载消失
-        setTimeout(() => {
-            this.setState({
-                initDone: true
-            })
-        }, 1000);
+        // 从localstoreage里面获取城市
+        let cityName = LocalStore.getItem(CITYNAME);
+        // console.log('cityname=', cityName);
+        if (cityName == null) {
+            cityName = '北京';
+        }
+
+        // 将城市信息存储到Redux中
+        this.props.userInfoActions.update({
+            cityName
+        })
+
+        // 修改状态
+        this.setState({
+            initDone: true
+        })
     }
 }
 
-module.exports = App;
+
+// -------------------redux react 绑定--------------------
+
+
+function mapStateToProps(state) {
+    return {}
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        userInfoActions: bindActionCreators(userInfoActionsFromOtherFile, dispatch)
+    }
+}
+
+//module.exports = App;
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(App);
