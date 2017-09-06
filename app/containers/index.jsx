@@ -30,7 +30,6 @@ class App extends React.Component {
     componentDidMount() {
         // 从localstoreage里面获取城市
         let cityName = LocalStore.getItem(CITYNAME);
-        // console.log('cityname=', cityName);
         if (cityName == null) {
             cityName = '北京';
         }

@@ -9,7 +9,6 @@ class List extends React.Component {
 
     render() {
         const data = this.props.data;
-        console.log('data==', data);
         return (
             <div>
                 {

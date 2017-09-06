@@ -48,7 +48,6 @@ class List extends React.Component {
         result.then(res => {
             return res.json()
         }).then(json => {
-            console.log('resultHandle===json===', json);
             const hasMore = json.hasMore;
             const data = json.data;
 
