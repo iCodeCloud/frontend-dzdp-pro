@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import HomeHeader from '../../components/HomeHeader';
 import Category from '../../components/Category';
+import Ad from './subpage/Ad';
 
 
 
@@ -17,6 +18,8 @@ class Home extends React.Component {
                 <HomeHeader cityName={this.props.userinfo.cityName}/>
                 <hr />
                 <Category />
+                <hr />
+                <Ad />
                 <hr />
             </div>
         )
