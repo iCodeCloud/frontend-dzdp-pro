@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import HomeHeader from '../../components/HomeHeader';
 import Category from '../../components/Category';
 import Ad from './subpage/Ad';
+import List from './subpage/List';
 
 
 
@@ -21,6 +22,9 @@ class Home extends React.Component {
                 <hr />
                 <Ad />
                 <hr />
+                <List cityName={this.props.userinfo.cityName} />
+                <hr />
+
             </div>
         )
     }

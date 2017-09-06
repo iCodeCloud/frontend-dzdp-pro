@@ -25,7 +25,7 @@ class Ad extends React.Component {
 
     componentDidMount() {
         const result = getAdData();
-        console.log('result=', result);
+        // console.log('result=', result);
         result.then((res) => {
             return res.json()
         }).then((json) => {
