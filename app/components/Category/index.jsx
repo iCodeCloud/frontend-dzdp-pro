@@ -26,12 +26,28 @@ class Category extends React.Component {
         return (
             <div>
                 <ReactSwipe className="carousel" swipeOptions={opt}>
-                    <div>PANE 1</div>
-                    <div>PANE 2</div>
-                    <div>PANE 3</div>
+                    <div>
+                        <ul>
+                            <li>第一张</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>第二张</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul>
+                            <li>第三张</li>
+                        </ul>
+                    </div>
                 </ReactSwipe>
                 <div>
-                    {this.state.index}
+                    <ul>
+                        <li className={this.state.index === 0 ? 'selected' : ''}>1</li>
+                        <li className={this.state.index === 1 ? 'selected' : ''}>2</li>
+                        <li className={this.state.index === 2 ? 'selected' : ''}>3</li>
+                    </ul>
                 </div>
             </div>
         )
