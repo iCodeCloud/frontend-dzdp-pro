@@ -1,4 +1,5 @@
 import React from 'react'
+import Item from './Item/index';
 
 class List extends React.Component {
 
@@ -10,7 +11,15 @@ class List extends React.Component {
         const data = this.props.data;
         console.log('data==', data);
         return (
-            <div>111</div>
+            <div>
+                {
+                    data.map((item, index) => {
+                        return (
+                            <Item key={index} data={item}/>
+                        )
+                    })
+                }
+            </div>
         )
     }
 }
