@@ -1,16 +1,17 @@
 import React from 'react';
 import {getListData} from '../../../fetch/home/home';
 import ListCompoent from '../../../components/List';
+import LoadMore from '../../../components/LoadMore/index';
 
 class List extends React.Component {
 
     constructor(props, context) {
         super(props, context);
         this.state = {
-            data: [],
-            hasMore: false,
-            isLoadingMore: false,
-            page: 0
+            data: [], // 存储列表信息
+            hasMore: false, // 是否有下一页
+            isLoadingMore: false, // 当前状态，按钮的文字状态， “加载中”中和“加载更多信息”
+            page: 0  // 页数
         }
     }
 
@@ -23,11 +24,11 @@ class List extends React.Component {
                         ? <ListCompoent data={this.state.data}/>
                         : <div>加载中...</div>
                 }
-                {/*
+                {
                     this.state.hasMore
                         ? <LoadMore isLoadingMore={this.state.isLoadingMore} loadMoreFn={this.loadMoreData.bind(this)}/>
                         : ''
-                */}
+                }
             </div>
         )
     }
@@ -41,6 +42,25 @@ class List extends React.Component {
         const cityName = this.props.cityName;
         const result = getListData(cityName, 0);
         this.resultHandle(result);
+    }
+
+    // 加载更多数据
+    loadMoreData() {
+        // 记录状态
+        this.setState({
+            isLoadingMore: true
+        })
+
+        const cityName = this.props.cityName;
+        const page = this.state.page;
+        const result = getListData(cityName, page);
+        this.resultHandle(result);
+
+        // 增加page
+        this.setState({
+            page: page + 1,
+            isLoadingMore: false
+        })
     }
 
     // 处理数据
