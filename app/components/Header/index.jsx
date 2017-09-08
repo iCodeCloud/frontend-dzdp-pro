@@ -19,7 +19,6 @@ class Header extends React.Component {
 
     clickHandle() {
         const backRouter = this.props.backRouter;
-        console.log('backRouter-', backRouter);
         if (backRouter) {
             console.log('hashHistory', hashHistory);
             hashHistory.push(hashHistory);

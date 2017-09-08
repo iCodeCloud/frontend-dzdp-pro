@@ -19,7 +19,6 @@ class City extends React.Component {
     }
 
     render() {
-        console.log('this.props==', this.props);
         return (
             <div>
                 <Header title='选择城市' backRouter='/home'/>
